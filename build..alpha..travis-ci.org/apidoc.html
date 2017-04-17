@@ -1,0 +1,261 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/geddski/grunt-release#readme"
+
+    >grunt-release (v0.14.0)</a>
+</h1>
+<h4>Release a new version of your Node-based project</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-release">module grunt-release</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-release.grunt-release">
+            function <span class="apidocSignatureSpan"></span>grunt-release
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-release.toString">
+            function <span class="apidocSignatureSpan">grunt-release.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-release" id="apidoc.module.grunt-release">module grunt-release</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-release.grunt-release" id="apidoc.element.grunt-release.grunt-release">
+        function <span class="apidocSignatureSpan"></span>grunt-release
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">grunt-release = function (grunt) {
+  &#x27;use strict&#x27;;
+
+  grunt.initConfig({
+
+    clean: {
+      test: &#x27;test/fixtures/_*.{json,md}&#x27;
+    },
+    nodeunit: {
+      tests: &#x27;test/release_test.js&#x27;
+    },
+    release: {
+      options: {
+        bump: true,
+        file: &#x27;package.json&#x27;,
+        changelog: &#x27;CHANGELOG.md&#x27;,
+        changelogText: &#x27;### &#x3c;%= version %&#x3e; - &#x27; + grunt.template.today(&#x27;yyyy-mm-dd&#x27;) + &#x27;\n&#x27;,
+        commitMessage: &#x27;v&#x3c;%= version %&#x3e;&#x27;,
+        add: true,
+        commit: true,
+        tag: true,
+        push: true,
+        pushTags: true,
+        npm: true,
+        npmtag: false,
+        github: {
+          repo: &#x27;geddski/grunt-release&#x27;,
+          accessTokenVar: &#x27;GITHUB_ACCESS_TOKEN&#x27;
+        }
+      }
+    },
+    releaseTest: {
+      options: {
+        bump: true,
+        add: false,
+        commit: false,
+        tag: false,
+        push: false,
+        pushTags: false,
+        npm: false,
+        npmtag: false,
+        github: false
+      },
+      general: {
+        options: {
+          file: &#x27;test/fixtures/_component.json&#x27;,
+          changelog: &#x27;test/fixtures/_CHANGELOG.md&#x27;,
+          additionalFiles: [&#x27;test/fixtures/_bower.json&#x27;],
+          changelogText: grunt.template.process(&#x27;### &#x3c;%= version %&#x3e;\n&#x27;, {data: {&#x27;version&#x27;: &#x27;0.0.13&#x27;}}),
+          commitMessage: grunt.template.process(&#x27;v&#x3c;%= version %&#x3e;&#x27;, {data: {&#x27;version&#x27;: &#x27;0.0.13&#x27;}})
+        }
+      },
+      absolute: {
+        args: [&#x27;1.2.3&#x27;],
+        options: {
+          file: &#x27;test/fixtures/_bower-absolute.json&#x27;
+        }
+      },
+      patch: {
+        args: [&#x27;patch&#x27;],
+        options: {
+          file: &#x27;test/fixtures/_component-patch.json&#x27;
+        }
+      },
+      minor: {
+        args: [&#x27;minor&#x27;],
+        options: {
+          file: &#x27;test/fixtures/_component-minor.json&#x27;
+        }
+      },
+      major: {
+        args: [&#x27;major&#x27;],
+        options: {
+          file: &#x27;test/fixtures/_component-major.json&#x27;
+        }
+      }
+    },
+    setup: {
+      test: {
+        files: [{
+          from: &#x27;test/fixtures/component.json&#x27;,
+          dest: &#x27;test/fixtures/_component.json&#x27;
+        },{
+          from: &#x27;test/fixtures/bower.json&#x27;,
+          dest: &#x27;test/fixtures/_bower.json&#x27;
+        },{
+          from: &#x27;test/fixtures/CHANGELOG.md&#x27;,
+          dest: &#x27;test/fixtures/_CHANGELOG.md&#x27;
+        },{
+          from: &#x27;test/fixtures/bower.json&#x27;,
+          dest: &#x27;test/fixtures/_bower-absolute.json&#x27;
+        },{
+          from: &#x27;test/fixtures/component.json&#x27;,
+          dest: &#x27;test/fixtures/_component-patch.json&#x27;
+        },{
+          from: &#x27;test/fixtures/component.json&#x27;,
+          dest: &#x27;test/fixtures/_component-minor.json&#x27;
+        },{
+          from: &#x27;test/fixtures/component.json&#x27;,
+          dest: &#x27;test/fixtures/_component-major.json&#x27;
+        }]
+      }
+    }
+  });
+
+  grunt.loadTasks(&#x27;tasks&#x27;);
+  grunt.loadNpmTasks(&#x27;grunt-contrib-clean&#x27;);
+  grunt.loadNpmTasks(&#x27;grunt-contrib-nodeunit&#x27;);
+
+  grunt.registerTask(&#x27;test&#x27;, [
+    &#x27;clean&#x27;,
+    &#x27;setup&#x27;,
+    &#x27;releaseTest&#x27;,
+    &#x27;nodeunit&#x27;,
+    &#x27;clean&#x27;
+  ]);
+
+  grunt.registerMultiTask(&#x27;setup&#x27;, &#x27;Setup test fixtures&#x27;, function(){
+    this.files.forEach(function(f){
+      grunt.file.copy(f.from, f.dest);
+    });
+  });
+
+  grunt.registerMultiTask(&#x27;releaseTest&#x27;, function(){
+    var args = (this.data.args || []).join(&#x27;:&#x27;);
+
+    grunt.config.set(&#x27;release&#x27;, {});
+    grunt.config.merge({
+      release: grunt.config.data[this.name]
+    });
+
+    grunt.config.merge({
+      release: grunt.config.data[this.name][this.target]
+    });
+
+    grunt.task.run(&#x27;release&#x27; + (args &#x26;&#x26; &#x27;:&#x27; + args));
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-release.toString" id="apidoc.element.grunt-release.toString">
+        function <span class="apidocSignatureSpan">grunt-release.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
