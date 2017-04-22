@@ -1,4 +1,7 @@
-# api documentation for  [grunt-release (v0.14.0)](https://github.com/geddski/grunt-release#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-release.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-release) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-release.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-release)
+# npmdoc-grunt-release
+
+#### api documentation for  [grunt-release (v0.14.0)](https://github.com/geddski/grunt-release#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-release.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-release) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-release.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-release)
+
 #### Release a new version of your Node-based project
 
 [![NPM](https://nodei.co/npm/grunt-release.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/grunt-release)
@@ -78,7 +81,8 @@
     "scripts": {
         "test": "grunt test"
     },
-    "version": "0.14.0"
+    "version": "0.14.0",
+    "bin": {}
 }
 ```
 
